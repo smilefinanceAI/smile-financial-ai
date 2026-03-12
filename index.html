@@ -3,150 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Financial Solution | No. 1 Business Loan & Govt. Subsidy Consultant India</title>
-    <meta name="description" content="Apply for PMEGP, Mudra, Startup India Loans. Smile Financial Solution provides 100% expert guidance for government funding and project reports.">
-    <meta name="keywords" content="PMEGP Loan, Mudra Loan, Startup India, Business Loan Consultant, Smile Financial, New Delhi Finance">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Smile Finance AI | #1 Loan & Credit Card Hub India</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 font-sans text-gray-800">
+<body>
 
-    <div class="bg-blue-900 text-white py-2 px-6 text-sm flex justify-between items-center hidden md:flex">
-        <span><i class="fas fa-map-marker-alt text-green-400"></i> Kapashera, New Delhi | All India Service</span>
-        <div class="flex space-x-4">
-            <a href="tel:+919773747761" class="hover:text-green-400"><i class="fas fa-phone"></i> +91-XXXXX-XXXXX</a>
-            <a href="Request%20call%20back.html" class="bg-green-600 px-3 py-1 rounded hover:bg-green-500 transition">Request Callback</a>
+    <header class="hero">
+        <div class="video-bg">
+            <video autoplay muted loop playsinline id="heroVideo"></video>
         </div>
-    </div>
-
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-extrabold text-blue-800 tracking-tighter">SMILE <span class="text-green-600">FINANCE</span></a>
-            
-            <ul class="hidden lg:flex space-x-6 font-semibold text-gray-700 uppercase text-xs">
-                <li><a href="index.html" class="text-blue-600 border-b-2 border-blue-600">Home</a></li>
-                <li><a href="About.html" class="hover:text-blue-600">About Us</a></li>
-                <li><a href="Sarvice.html" class="hover:text-blue-600">All Services</a></li>
-                <li><a href="Our%20process.html" class="hover:text-blue-600">Our Process</a></li>
-                <li><a href="Success%20stories.html" class="hover:text-blue-600">Success Stories</a></li>
-                <li><a href="Blog.html" class="hover:text-blue-600">Resources</a></li>
-                <li><a href="Contact.html" class="hover:text-blue-600">Contact</a></li>
-            </ul>
-
-            <div class="flex items-center space-x-3">
-                <a href="Login.html" class="text-gray-600 font-bold hidden sm:block">Login</a>
-                <a href="Book%20consultating.html" class="bg-blue-700 text-white px-6 py-2 rounded-full font-bold shadow-lg hover:bg-blue-800 transition">Consult Now</a>
+        <nav class="navbar">
+            <div class="logo">SMILE FINANCE <span>AI</span></div>
+            <div class="nav-menu">
+                <a href="pages/service.html">Services</a>
+                <a href="pages/about.html">About</a>
+                <a href="pages/contact.html" class="btn-nav">Contact Us</a>
             </div>
         </nav>
+        <div class="hero-text">
+            <span class="badge">MSME & DPPIT Registered 🛡️</span>
+            <h1>Sahi Advice, <br><span>Smile Finance.</span></h1>
+            <p>India's most trusted AI portal since 2018. 1200+ Experts aapke saath.</p>
+            <div class="hero-btns">
+                <a href="#lead-form" class="btn-main">Get Approval Now 🚀</a>
+            </div>
+        </div>
     </header>
 
-    <section class="relative bg-blue-900 text-white py-24 px-6 overflow-hidden">
-        <div class="container mx-auto flex flex-col md:flex-row items-center relative z-10">
-            <div class="md:w-3/5 text-center md:text-left">
-                <h1 class="text-4xl md:text-7xl font-black leading-tight mb-6">
-                    India's Most Trusted <br><span class="text-green-400 italic">Funding Partner.</span>
-                </h1>
-                <p class="text-lg md:text-2xl mb-10 text-blue-100 max-w-2xl">
-                    Get up to ₹5 Crores for your business via PMEGP, Mudra, and Startup India. 8+ Years of Experience in Financial Consultancy.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="Free%20audit.html" class="bg-green-500 hover:bg-green-600 px-10 py-4 rounded-xl text-xl font-bold transition shadow-xl">Get Free Audit</a>
-                    <a href="Case%20studies.html" class="border-2 border-white hover:bg-white hover:text-blue-900 px-10 py-4 rounded-xl text-xl font-bold transition">View Success Case</a>
-                </div>
+    <section class="services">
+        <h2 class="section-title">Our Premium Services</h2>
+        <div class="service-grid">
+            <div class="s-card">
+                <div class="img-box" id="img-loan"></div>
+                <h3>Personal Loan</h3>
+                <p>Instant Fund upto ₹25 Lakhs.</p>
+                <button onclick="scrollToLead('YOUR_GROMO_LINK')">Apply</button>
             </div>
-            <div class="md:w-2/5 mt-12 md:mt-0 relative">
-                <img src="https://via.placeholder.com/600x500" alt="Finance Success" class="rounded-3xl border-8 border-blue-800 shadow-2xl">
-                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl text-blue-900 hidden lg:block">
-                    <p class="text-4xl font-black">98%</p>
-                    <p class="text-sm font-bold text-gray-500 uppercase">Approval Rate</p>
-                </div>
+            <div class="s-card">
+                <div class="img-box" id="img-card"></div>
+                <h3>Credit Cards</h3>
+                <p>Bad CIBIL? No Problem. Apply Now.</p>
+                <button onclick="scrollToLead('YOUR_GROMO_LINK')">Apply</button>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-blue-900">Expertise in Govt. Schemes</h2>
-                <p class="text-gray-500 mt-4 text-xl">We help you navigate complex paperwork for faster funding.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <a href="Sarvice-details.html?id=pmegp" class="group bg-blue-50 p-8 rounded-2xl border-b-4 border-blue-700 hover:bg-blue-700 hover:text-white transition-all duration-300">
-                    <div class="bg-white w-16 h-16 rounded-lg flex items-center justify-center text-blue-700 text-3xl mb-6 shadow-md group-hover:bg-blue-100 transition">
-                        <i class="fas fa-building-columns"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">PMEGP Loan</h3>
-                    <p class="mb-4 opacity-80">Up to 35% Subsidy for New Ventures. Complete DPR support.</p>
-                    <span class="font-bold underline uppercase text-sm tracking-widest">Apply Now</span>
-                </a>
-                
-                </div>
+    <section class="form-section" id="lead-form">
+        <div class="form-container">
+            <h2>Eligibility Check (30 Seconds)</h2>
+            <form id="mainLeadForm">
+                <input type="text" id="uName" placeholder="Pura Naam" required>
+                <input type="tel" id="uPhone" placeholder="WhatsApp Number" required>
+                <button type="submit" class="btn-main">Check & Redirect</button>
+            </form>
         </div>
     </section>
 
-    <section class="py-20 bg-slate-900 text-white">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <h2 class="text-4xl font-bold mb-6 italic">Why Entrepreneurs Trust <span class="text-green-500">Smile Financial?</span></h2>
-                <ul class="space-y-4">
-                    <li class="flex items-start space-x-3 text-lg italic"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span>8+ Years of Professional Experience.</span></li>
-                    <li class="flex items-start space-x-3 text-lg italic"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span>DPR Experts for All Banks.</span></li>
-                    <li class="flex items-start space-x-3 text-lg italic"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span>Step-by-Step Documentation Guidance.</span></li>
-                </ul>
-                <div class="mt-10">
-                    <a href="Why%20choose%20us.html" class="bg-blue-600 px-8 py-3 rounded font-bold hover:bg-blue-500 transition">Read Full Advantage →</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 grid grid-cols-2 gap-4">
-                <div class="bg-slate-800 p-8 rounded-xl text-center"><p class="text-3xl font-bold">500+</p><p class="text-gray-400">Loans Done</p></div>
-                <div class="bg-slate-800 p-8 rounded-xl text-center"><p class="text-3xl font-bold">100Cr+</p><p class="text-gray-400">Funds Disbursed</p></div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-100 pt-16 pb-8 border-t">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm">
-            <div>
-                <h3 class="font-black text-xl mb-6 text-blue-900">SMILE FINANCE</h3>
-                <p class="text-gray-600 mb-6 italic">Empowering Indian entrepreneurs with the right capital and strategy since 2018.</p>
-                <div class="flex space-x-4 text-xl text-blue-700">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp text-green-500"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4 uppercase">Popular Schemes</h4>
-                <ul class="space-y-2 text-gray-600">
-                    <li><a href="Sarvice-details.html?pmegp" class="hover:text-blue-700">PMEGP Loan Solution</a></li>
-                    <li><a href="Sarvice-details.html?mudra" class="hover:text-blue-700">Pradhan Mantri Mudra Yojana</a></li>
-                    <li><a href="Sarvice-details.html?startup" class="hover:text-blue-700">Startup India Certification</a></li>
-                    <li><a href="Sarvice-details.html?lap" class="hover:text-blue-700">Loan Against Property</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4 uppercase">Company</h4>
-                <ul class="space-y-2 text-gray-600">
-                    <li><a href="Team.html" class="hover:text-blue-700">Our Team</a></li>
-                    <li><a href="Career.html" class="hover:text-blue-700">Work With Us</a></li>
-                    <li><a href="Geography%20presences.html" class="hover:text-blue-700">Our Presence</a></li>
-                    <li><a href="Privacy%20policy.html" class="hover:text-blue-700">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold mb-4 uppercase">Newsletter</h4>
-                <p class="text-gray-600 mb-4">Rank 1 updates and funding news.</p>
-                <input type="email" placeholder="Email Address" class="w-full px-4 py-2 rounded border mb-2 focus:ring-2 focus:ring-blue-500">
-                <button class="bg-blue-900 text-white w-full py-2 rounded font-bold uppercase tracking-widest text-xs hover:bg-black transition">Subscribe</button>
-            </div>
-        </div>
-        <div class="text-center mt-16 text-gray-400 text-xs">
-            &copy; 2026 Smile Financial Solution | H.no 1156, Kapashera, New Delhi 110037
-        </div>
-    </footer>
-
-    <script src="js/script.js"></script>
+    <script src="js/script.js" type="module"></script>
 </body>
 </html>
