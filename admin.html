@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <title>Admin Dashboard | Smile Finance</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+        .lead-card { background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .btn-wa { background: #25D366; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; }
+        h1 { color: #1a73e8; }
+    </style>
+</head>
+<body>
+    <h1>Smile Finance - Recent Leads 📊</h1>
+    <div id="leadsList">Loading leads...</div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+
+        const firebaseConfig = { /* Aapki Same Config Yaha */ };
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        const leadsRef = ref(database, 'leads');
+        onValue(leadsRef, (snapshot) => {
+            const data = snapshot.val();
+            const listDiv = document.getElementById('leadsList');
+            listDiv.innerHTML = "";
+            
+            for (let id in data) {
+                const lead = data[id];
+                listDiv.innerHTML += `
+                    <div class="lead-card">
+                        <div>
+                            <strong>${lead.name}</strong> (${lead.phone})<br>
+                            Zarurat: ₹${lead.loanAmount} | Link: ${lead.productLink}
+                        </div>
+                        <a href="https://wa.me/91${lead.phone}?text=Hello ${lead.name}, Smile Finance se baat kar rahe hain..." class="btn-wa" target="_blank">Chat on WhatsApp</a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
