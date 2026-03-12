@@ -2,42 +2,52 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Smile Finance AI | Official</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile Finance AI | #1 Financial Portal</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#" class="logo">SMILE FINANCE <span>AI</span></a>
-        <div class="nav-links">
-            </div>
-    </nav>
-
     <header class="hero">
-        <div class="video-bg">
-            <video autoplay muted loop playsinline id="heroVideo"></video>
-        </div>
-        <div class="hero-content">
-            <h1>CIBIL Kharab Hai? <br><span>Fikar Mat Karein!</span></h1>
-            <p>2018 se trusted financial solutions. 1200+ experts ki team aapke saath hai.</p>
-            <a href="#lead-form" class="btn-main" style="width:auto; padding: 15px 40px;">Apply Now 🚀</a>
+        <div class="container">
+            <h1>CIBIL Ki Tension Chhodo, <br><span>Smile Finance</span> Chuno!</h1>
+            <p>India's most trusted AI-powered financial hub since 2018.</p>
+            <a href="#apply" class="btn-prime" style="width:auto;">Apply Now 🚀</a>
         </div>
     </header>
 
-    <section class="services">
-        <h2 class="section-title">Hamari Services</h2>
-        <div class="service-grid" id="dynamicServices">
-            </div>
-    </section>
+    <div class="container">
+        <div class="stats">
+            <div><h2>50Cr+</h2><p>Disbursed</p></div>
+            <div><h2>1200+</h2><p>Experts</p></div>
+            <div><h2>99%</h2><p>Success</p></div>
+        </div>
 
-    <section class="form-section" id="lead-form">
-        <div class="form-wrapper">
-            <h2 style="margin-bottom:20px; text-align:center;">Instant Check</h2>
-            <form id="mainLeadForm">
-                <input type="text" id="custName" placeholder="Pura Naam" required>
-                <input type="tel" id="custPhone" placeholder="WhatsApp Number" required>
-                <button type="submit" class="btn-main">Get Free Consultation</button>
+        <div class="services-grid" id="serviceContainer">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4386339/pexels-photo-4386339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img">
+                <div class="card-body">
+                    <h3>Personal Loan</h3>
+                    <p>Instant cash for your needs within 24 hours.</p>
+                    <button class="btn-prime">Check Approval</button>
+                </div>
+             </div>
+             </div>
+    </div>
+
+    <section class="container" id="apply">
+        <div class="form-box">
+            <h2 style="text-align:center; margin-bottom:20px;">Eligibility Check (30 Sec)</h2>
+            <form id="leadForm">
+                <input type="text" placeholder="Apna Pura Naam" required>
+                <input type="tel" placeholder="WhatsApp Number" required>
+                <select>
+                    <option>Select Product</option>
+                    <option>Personal Loan</option>
+                    <option>Business Loan</option>
+                    <option>Credit Card</option>
+                </select>
+                <button type="submit" class="btn-prime">Check Eligibility & Proceed</button>
             </form>
         </div>
     </section>
