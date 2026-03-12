@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | Smile Finance AI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-container { max-width: 900px; margin: 50px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #0052cc; }
+        input, textarea, select { width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 10px; font-size: 16px; }
+        .btn-save { background: #00c853; color: white; padding: 15px 40px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h1 style="text-align:center; margin-bottom:30px;">🚀 Add New Product (GroMo Style)</h1>
+        
+        <form id="productForm">
+            <div class="input-group">
+                <label>Product Name (e.g., HDFC Credit Card)</label>
+                <input type="text" id="pName" placeholder="Bank ka naam aur card" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Category</label>
+                <select id="pCategory">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="personal-loan">Personal Loan</option>
+                    <option value="business-loan">Business Loan</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Benefit 1 (e.g., No Annual Fee)</label>
+                <input type="text" id="pBenefit1" required>
+            </div>
+
+            <div class="input-group">
+                <label>Affiliate Link (Gromo/Bank Link)</label>
+                <input type="url" id="pLink" placeholder="https://sales.gromo.in/..." required>
+            </div>
+
+            <button type="submit" class="btn-save">Live on Website Now</button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { db } from '../js/firebase-config.js';
+        import { ref, push, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+
+        document.getElementById('productForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const productData = {
+                name: document.getElementById('pName').value,
+                category: document.getElementById('pCategory').value,
+                benefit: document.getElementById('pBenefit1').value,
+                link: document.getElementById('pLink').value,
+                timestamp: new Date().toISOString()
+            };
+
+            const productRef = ref(db, 'live_products');
+            const newProduct = push(productRef);
+            set(newProduct, productData).then(() => {
+                alert("Product is now LIVE on Home Page!");
+                e.target.reset();
+            });
+        });
+    </script>
+</body>
+</html>
