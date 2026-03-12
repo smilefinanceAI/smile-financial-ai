@@ -3,47 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Finance AI | Instant Financial Solutions</title>
+    <title>Smile Finance AI | 100% Instant Loan Approval</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="hero">
-        <div class="nav-minimal">
+        <nav class="navbar">
             <div class="logo">SMILE FINANCE <span>AI</span></div>
-            <a href="tel:8586051944" class="nav-call">📞 Call Expert</a>
-        </div>
+            <a href="tel:8586051944" class="nav-call">📞 Expert Se Baat Karein</a>
+        </nav>
         <div class="hero-content">
-            <span class="badge">RBI & MSME Verified</span>
-            <h1>CIBIL Ki Tension Chhodo, <br><span>Loan Chuno!</span></h1>
-            <p>India's most trusted AI-powered financial hub since 2018.</p>
+            <span class="badge">RBI & MSME Certified 🛡️</span>
+            <h1>CIBIL Ki Tension Chhodo, <br><span>Asli Approval</span> Yahan Hai!</h1>
+            <p>India's Trusted AI Hub since 2018. 1200+ Experts aapki madad ke liye taiyaar.</p>
             <div class="hero-cta">
-                <a href="#lead-form" class="btn-primary">Apply Now 🚀</a>
-                <a href="https://wa.me/7290977231" class="btn-outline">Talk on WhatsApp</a>
+                <a href="#lead-form" class="btn-primary">Abhi Apply Karein 🚀</a>
+                <a href="https://wa.me/7290977231" class="btn-outline">WhatsApp Support</a>
             </div>
         </div>
     </header>
 
     <section class="trust-bar">
-        <p>Trusted Banking Partners</p>
-        <div class="logo-slider">
-            <span>HDFC BANK</span> • <span>ICICI BANK</span> • <span>AXIS BANK</span> • <span>TATA CAPITAL</span> • <span>POONAWALLA</span>
+        <p>Hamare Banking Partners</p>
+        <div class="logo-row">
+            <b>HDFC BANK</b> • <b>ICICI BANK</b> • <b>AXIS BANK</b> • <b>TATA CAPITAL</b> • <b>POONAWALLA</b>
         </div>
     </section>
 
-    <section class="calculator-box">
+    <section class="calculator">
         <div class="container">
-            <h2>Instant EMI Calculator</h2>
-            <div class="calc-grid">
-                <div class="input-field">
-                    <label>Loan Amount (₹)</label>
-                    <input type="range" min="10000" max="1000000" value="100000" id="amtRange" oninput="calculateEMI()">
-                    <span id="amtVal">₹1,00,000</span>
+            <h2>Instant Loan EMI Calculator</h2>
+            <div class="calc-box">
+                <div class="input-group">
+                    <label>Loan Amount: <span id="amtLabel">₹1,00,000</span></label>
+                    <input type="range" min="10000" max="1000000" step="10000" value="100000" id="loanAmountRange" oninput="calculateEMI()">
                 </div>
                 <div class="emi-display">
                     <p>Estimated Monthly EMI</p>
-                    <h3 id="emiResult">₹8,815*</h3>
+                    <h3 id="emiResultText">₹8,815*</h3>
                 </div>
             </div>
         </div>
@@ -51,78 +50,56 @@
 
     <section class="services" id="products">
         <div class="container">
-            <h2 class="section-title">Exclusive Financial Products</h2>
+            <h2 class="section-title">Hamare Financial Products</h2>
             <div class="product-grid">
                 <div class="card">
-                    <div class="card-tag">Best for Low CIBIL</div>
+                    <div class="card-tag">High Approval</div>
                     <img src="https://img.icons8.com/fluency/96/credit-card-front.png" alt="Card">
                     <h3>IDFC FIRST Credit Card</h3>
-                    <ul>
-                        <li>✅ Zero Joining Fee</li>
-                        <li>✅ Instant Approval</li>
-                    </ul>
-                    <button class="btn-card" onclick="openLead('https://sales.gromo.in/ac/hCxUWHMdHF')">Apply Now</button>
+                    <p>Upto ₹5 Lakh Limit. No Income Proof Required*</p>
+                    <button class="btn-card" onclick="scrollToLead('https://sales.gromo.in/ac/hCxUWHMdHF')">Apply Now</button>
                 </div>
                 </div>
         </div>
     </section>
 
-    <section class="why-smile">
-        <div class="container">
-            <h2>Why 10,000+ Indians Trust Us?</h2>
-            <div class="points">
-                <div class="p-item"><b>800+</b> CAs ki Team</div>
-                <div class="p-item"><b>No</b> Advance Fees</div>
-                <div class="p-item"><b>Fast</b> Paperless Process</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="stats-strip">
-        <div class="stat"><h3>₹50Cr+</h3><p>Loan Disbursed</p></div>
+    <section class="stats-strip">
+        <div class="stat"><h3>₹50Cr+</h3><p>Disbursed</p></div>
         <div class="stat"><h3>1200+</h3><p>Employees</p></div>
-        <div class="stat"><h3>99%</h3><p>Success Ratio</p></div>
-    </div>
-
-    
-    <section class="process">
-        <h2>How It Works?</h2>
-        <div class="step-container">
-            <div class="step">1. Fill Details</div>
-            <div class="step">2. AI Matching</div>
-            <div class="step">3. Cash in Bank</div>
-        </div>
+        <div class="stat"><h3>99%</h3><p>Success Rate</p></div>
     </section>
 
-    <section class="compliance">
-        <div class="container">
-            <p><b>Smile Financial Solution</b> is a registered entity on the <b>DPPIT MCA Portal</b>. Reg No: MSME-XXXX-2018.</p>
+    <section class="process-section">
+        <h2>Kaise Kaam Karta Hai?</h2>
+        <div class="steps-grid">
+            <div class="step-item"><b>1</b><p>Details Bharein</p></div>
+            <div class="step-item"><b>2</b><p>AI Matching</p></div>
+            <div class="step-item"><b>3</b><p>Paisa Bank Mein</p></div>
         </div>
     </section>
 
     <section class="form-section" id="lead-form">
         <div class="form-card">
-            <h2>Apply in 30 Seconds</h2>
-            <p>Humara AI aapko best bank se match karega.</p>
+            <h2>Apply in 30 Seconds 📝</h2>
+            <p>Hamara AI aapko best bank offer se match karega.</p>
             <form id="mainLeadForm">
-                <input type="text" id="name" placeholder="Apna Pura Naam" required>
-                <input type="tel" id="phone" placeholder="WhatsApp Number" required>
-                <select id="pType">
-                    <option>Credit Card</option>
-                    <option>Personal Loan</option>
-                    <option>Business Loan</option>
+                <input type="text" id="custName" placeholder="Apna Pura Naam" required>
+                <input type="tel" id="custPhone" placeholder="WhatsApp Number" required>
+                <select id="loanOption">
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Business Loan">Business Loan</option>
                 </select>
-                <button type="submit">Check Eligibility & Proceed</button>
+                <button type="submit" id="submitBtn">Check Eligibility & Proceed</button>
             </form>
         </div>
     </section>
 
     <footer class="footer">
-        <p>Headquarters: Patel Nagar, South West Delhi, Opp. Police Chowki</p>
-        <p>Contact: 8586051944 | smilefinancialsolution01@gmail.com</p>
-        <div class="socials">FB | IG | TG | WA</div>
+        <p><b>Headquarters:</b> Patel Nagar, South West Delhi, Opp. Police Chowki</p>
+        <p>Help: 7290977231 | smilefinancialsolution01@gmail.com</p>
         <hr>
-        <p>© 2026 Smile Financial Solution. All Rights Reserved.</p>
+        <p>© 2026 Smile Financial Solution. MSME & DPPIT Registered.</p>
     </footer>
 
     <script type="module" src="script.js"></script>
