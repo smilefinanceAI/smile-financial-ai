@@ -3,54 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Finance AI | #1 Financial Portal</title>
+    <title>Smile Finance AI | Complete Financial Solutions</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <a href="index.html" class="logo">SMILE FINANCE <span>AI</span></a>
+            <div class="nav-links">
+                <a href="pages/service.html">Services</a>
+                <a href="pages/about.html">About</a>
+                <a href="pages/blog.html">Blog</a>
+                <a href="pages/contact.html">Contact</a>
+                <a href="pages/login.html" class="btn-login">Login</a>
+            </div>
+        </div>
+    </nav>
+
     <header class="hero">
-        <div class="container">
-            <h1>CIBIL Ki Tension Chhodo, <br><span>Smile Finance</span> Chuno!</h1>
-            <p>India's most trusted AI-powered financial hub since 2018.</p>
-            <a href="#apply" class="btn-prime" style="width:auto;">Apply Now 🚀</a>
+        <div class="video-container">
+            <video autoplay muted loop playsinline id="heroVideo"></video>
+        </div>
+        <div class="container hero-content">
+            <span class="badge">MSME & DPPIT Registered 🛡️</span>
+            <h1>CIBIL Kharab Hai? <br><span>Smile Finance AI</span> Hai!</h1>
+            <p>India's most trusted AI portal since 2018. 1200+ Experts aapke saath hain.</p>
+            <div class="hero-btns">
+                <a href="#apply" class="btn-main">Get Instant Approval 🚀</a>
+                <a href="pages/book-consultation.html" class="btn-outline">Free Consultation</a>
+            </div>
         </div>
     </header>
 
-    <div class="container">
-        <div class="stats">
-            <div><h2>50Cr+</h2><p>Disbursed</p></div>
-            <div><h2>1200+</h2><p>Experts</p></div>
-            <div><h2>99%</h2><p>Success</p></div>
-        </div>
-
-        <div class="services-grid" id="serviceContainer">
-            <div class="card">
-                <img src="https://images.pexels.com/photos/4386339/pexels-photo-4386339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img">
-                <div class="card-body">
-                    <h3>Personal Loan</h3>
-                    <p>Instant cash for your needs within 24 hours.</p>
-                    <button class="btn-prime">Check Approval</button>
-                </div>
-             </div>
-             </div>
-    </div>
-
-    <section class="container" id="apply">
-        <div class="form-box">
-            <h2 style="text-align:center; margin-bottom:20px;">Eligibility Check (30 Sec)</h2>
-            <form id="leadForm">
-                <input type="text" placeholder="Apna Pura Naam" required>
-                <input type="tel" placeholder="WhatsApp Number" required>
-                <select>
-                    <option>Select Product</option>
-                    <option>Personal Loan</option>
-                    <option>Business Loan</option>
-                    <option>Credit Card</option>
-                </select>
-                <button type="submit" class="btn-prime">Check Eligibility & Proceed</button>
-            </form>
+    <section class="stats-strip">
+        <div class="container stats-flex">
+            <div class="stat-item"><h2>50Cr+</h2><p>Loan Disbursed</p></div>
+            <div class="stat-item"><h2>1200+</h2><p>Employees</p></div>
+            <div class="stat-item"><h2>800+</h2><p>Expert CAs</p></div>
+            <div class="stat-item"><h2>99%</h2><p>Success Ratio</p></div>
         </div>
     </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Exclusive Financial Products</h2>
+            <div class="services-grid" id="serviceGrid">
+                </div>
+            <div style="text-align:center; margin-top:40px;">
+                <a href="pages/service.html" class="btn-outline">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Aapka Safar: 3 Simple Steps</h2>
+            <div class="steps-grid">
+                <div class="step"><span>1</span> <h3>Fill Details</h3><p>Bas 30 seconds mein details bharein.</p></div>
+                <div class="step"><span>2</span> <h3>AI Matching</h3><p>Hamara AI aapko best bank se match karega.</p></div>
+                <div class="step"><span>3</span> <h3>Cash in Bank</h3><p>Kam se kam samay mein loan approval.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-proof">
+        <div class="container">
+            <p>Smile Financial Solution is registered under <b>Ministry of Corporate Affairs</b> & <b>DPPIT</b>.</p>
+            <div class="partner-logos">
+                <span>HDFC</span> | <span>ICICI</span> | <span>AXIS</span> | <span>TATA CAPITAL</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="apply">
+        <div class="container form-flex">
+            <div class="form-text">
+                <h2>Abhi Apply Karein!</h2>
+                <p>Humara AI turant eligibility check karega.</p>
+            </div>
+            <div class="form-card">
+                <form id="mainLeadForm">
+                    <input type="text" placeholder="Apna Pura Naam" id="name" required>
+                    <input type="tel" placeholder="WhatsApp Number" id="phone" required>
+                    <select id="pType">
+                        <option>Personal Loan</option>
+                        <option>Business Loan</option>
+                        <option>Credit Card</option>
+                    </select>
+                    <button type="submit" class="btn-main" style="width:100%;">Check Approval</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <h3>SMILE FINANCE AI</h3>
+                <p>Patel Nagar, South West Delhi</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <a href="pages/faq.html">FAQ</a> | <a href="pages/privacy-policy.html">Privacy</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/script.js" type="module"></script>
 </body>
