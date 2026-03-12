@@ -1,140 +1,36 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap');
-
 :root {
     --primary: #1a73e8;
     --dark: #0d47a1;
-    --light-bg: #f4f7fe;
-    --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    --bg: #f8fafd;
 }
 
-* { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; /* Isse overflow ruk jayega */
-}
+* { margin:0; padding:0; box-sizing: border-box; }
+body { font-family: 'Lexend', sans-serif; background: var(--bg); overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-body {
-    font-family: 'Lexend', sans-serif;
-    background-color: var(--light-bg);
-    color: #333;
-    line-height: 1.6;
-    overflow-x: hidden; /* Side scroll band */
-}
-
-/* Master Container - Isse sab kuch beech mein rahega */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+/* Navbar Swag */
+.navbar { background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 1000; }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; font-weight: 800; color: var(--dark); text-decoration: none; }
+.nav-links a { margin-left: 20px; text-decoration: none; color: #444; font-weight: 600; font-size: 15px; }
 
 /* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #0d47a1 0%, #1a73e8 100%);
-    color: white;
-    padding: 100px 0 60px;
-    text-align: center;
-    border-radius: 0 0 50px 50px; /* Modern Curve */
-}
+.hero { height: 85vh; position: relative; color: white; display: flex; align-items: center; justify-content: center; text-align: center; }
+.video-container { position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; }
+#heroVideo { width:100%; height:100%; object-fit: cover; filter: brightness(0.4); }
+.hero h1 { font-size: clamp(32px, 8vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
 
-.hero h1 {
-    font-size: clamp(28px, 8vw, 54px);
-    font-weight: 800;
-    margin-bottom: 15px;
-    letter-spacing: -1px;
-}
+/* Grid Layouts */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 40px; }
+.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; }
+.card-img { height: 200px; background-size: cover; background-position: center; }
+.card-body { padding: 25px; }
 
-.hero p {
-    font-size: 18px;
-    opacity: 0.9;
-    max-width: 700px;
-    margin: 0 auto 30px;
-}
-
-/* Service Card Swag */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: -50px; /* Cards ko hero ke upar chadha diya */
-    padding-bottom: 60px;
-}
-
-.card {
-    background: white;
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.3);
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-.card-img {
-    height: 220px;
-    width: 100%;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 25px;
-    text-align: center;
-}
-
-.card-body h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: var(--dark);
-}
-
-/* Professional Buttons */
-.btn-prime {
-    background: var(--primary);
-    color: white;
-    padding: 14px 30px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-
-/* Form Section Fix */
-.form-box {
-    background: white;
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: var(--card-shadow);
-    max-width: 600px;
-    margin: 40px auto;
-}
-
-input, select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    border: 2px solid #eee;
-    border-radius: 12px;
-    font-size: 16px;
-    outline: none;
-}
-
-input:focus { border-color: var(--primary); }
+/* Buttons */
+.btn-main { background: var(--primary); color: white; padding: 15px 35px; border-radius: 12px; text-decoration: none; font-weight: 700; border: none; }
+.btn-outline { border: 2px solid white; color: white; padding: 13px 30px; border-radius: 12px; text-decoration: none; font-weight: 700; margin-left: 10px; }
 
 /* Stats Strip */
-.stats {
-    display: flex;
-    justify-content: space-around;
-    background: white;
-    padding: 40px 0;
-    margin: 40px 0;
-    border-radius: 20px;
-    text-align: center;
-}
+.stats-strip { background: white; padding: 50px 0; margin: 40px 0; }
+.stats-flex { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 30px; }
+.stat-item h2 { color: var(--primary); font-size: 40px; }
