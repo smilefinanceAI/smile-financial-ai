@@ -1,7 +1,7 @@
-// Firebase Initialization
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
 import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
+// Firebase Configuration
 const firebaseConfig = {
   apiKey: "AIzaSyD3FEfP9Htj3ANvIENwzlNIKZRE7qIYFBc",
   authDomain: "smile-finance-ai-2026.firebaseapp.com",
@@ -14,49 +14,49 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getDatabase(app);
 
-// EMI Calculator Logic
+// 1. EMI Calculator Function
 window.calculateEMI = function() {
-    let p = document.getElementById("amount").value;
-    let r = document.getElementById("rate").value / 12 / 100;
-    let n = document.getElementById("months").value;
+    let p = document.getElementById("loanAmountRange").value;
+    let r = 10.5 / 12 / 100; // Average Interest 10.5%
+    let n = 12; // 1 Year tenure default
+    document.getElementById("amtLabel").innerText = "₹" + parseInt(p).toLocaleString();
+    
     let emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    document.getElementById("emiValue").innerText = "₹" + Math.round(emi).toLocaleString();
-};
+    document.getElementById("emiResultText").innerText = "₹" + Math.round(emi).toLocaleString() + "*";
+}
 
-// Global Variable to store the link
-let pendingLink = "https://sales.gromo.in/ac/hCxUWHMdHF"; 
+// 2. Redirect Handling
+let activeLink = "https://sales.gromo.in/ac/hCxUWHMdHF"; 
 
 window.scrollToLead = function(link) {
-    pendingLink = link;
+    activeLink = link;
     document.getElementById('lead-form').scrollIntoView({behavior: 'smooth'});
-};
+}
 
-// Lead Form Submission
+// 3. Lead Submission to Firebase
 document.getElementById('mainLeadForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const amount = document.getElementById('loanAmount').value;
+    const btn = document.getElementById('submitBtn');
+    btn.innerText = "Processing...";
+    btn.disabled = true;
 
-    // Data to save in Firebase
-    const leadsRef = ref(database, 'leads');
-    const newLeadRef = push(leadsRef);
-    
-    set(newLeadRef, {
-        name: name,
-        phone: phone,
-        loanAmount: amount,
-        timestamp: new Date().toISOString(),
-        status: "New",
-        productLink: pendingLink
-    }).then(() => {
-        alert("✅ Eligibility Check Successful! Redirecting to Bank Partner...");
-        window.location.href = pendingLink;
-    }).catch((error) => {
-        console.error("Firebase Error: ", error);
-        alert("Kuch error aaya, please try again.");
+    const leadData = {
+        name: document.getElementById('custName').value,
+        phone: document.getElementById('custPhone').value,
+        product: document.getElementById('loanOption').value,
+        targetLink: activeLink,
+        timestamp: new Date().toLocaleString()
+    };
+
+    const newLeadRef = push(ref(db, 'leads'));
+    set(newLeadRef, leadData).then(() => {
+        alert("🎉 Eligibility Match! Bank Page Par Jayein.");
+        window.location.href = activeLink;
+    }).catch((err) => {
+        alert("Error: " + err.message);
+        btn.disabled = false;
+        btn.innerText = "Try Again";
     });
 });
