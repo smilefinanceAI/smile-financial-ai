@@ -2,95 +2,72 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Finance - Pro Admin Dashboard</title>
+    <title>Admin Login - Smile Finance</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 flex">
+<body class="bg-slate-900 flex items-center justify-center min-h-screen">
 
-    <div class="w-64 bg-blue-900 min-h-screen text-white p-5 hidden md:block">
-        <h2 class="text-2xl font-bold mb-10">Smile Admin</h2>
-        <nav class="space-y-4">
-            <a href="#" class="block p-3 bg-blue-800 rounded"><i class="fas fa-home mr-2"></i> Dashboard</a>
-            <a href="#" class="block p-3 hover:bg-blue-700 rounded"><i class="fas fa-plus-circle mr-2"></i> Add Products</a>
-            <a href="#" class="block p-3 hover:bg-blue-700 rounded"><i class="fas fa-users mr-2"></i> Lead Tracker</a>
-            <a href="#" class="block p-3 hover:bg-blue-700 rounded"><i class="fas fa-bullhorn mr-2"></i> Marketing Tools</a>
-            <a href="#" class="block p-3 hover:bg-blue-700 rounded"><i class="fas fa-chart-line mr-2"></i> Analytics</a>
-        </nav>
+    <div id="login-box" class="bg-white p-8 rounded-3xl shadow-2xl w-96">
+        <h2 class="text-2xl font-black text-center text-slate-800 mb-6 uppercase">Admin Login</h2>
+        <input id="adminID" type="text" placeholder="User ID (Aarif@786)" class="w-full p-4 border rounded-xl mb-4 outline-none focus:ring-2 ring-blue-500">
+        <input id="adminPass" type="password" placeholder="Password" class="w-full p-4 border rounded-xl mb-6 outline-none focus:ring-2 ring-blue-500">
+        <button onclick="checkAuth()" class="w-full bg-blue-600 text-white py-4 rounded-xl font-black hover:bg-blue-700 transition-all">UNLOOCK DASHBOARD</button>
     </div>
 
-    <div class="flex-1 p-8">
-        
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
-                <p class="text-gray-500 text-sm">Total Leads</p>
-                <h3 id="statLeads" class="text-2xl font-bold">0</h3>
+    <div id="dashboard" class="hidden w-full h-screen overflow-y-auto p-6 bg-slate-950 text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-10 border-b border-slate-800 pb-6">
+                <h2 class="text-2xl font-black text-blue-400 italic">Smile Finance - Command Center</h2>
+                <button onclick="location.reload()" class="bg-red-500/10 text-red-500 px-4 py-2 rounded-lg text-xs font-bold uppercase border border-red-500/20">Logout</button>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
-                <p class="text-gray-500 text-sm">Active Offers</p>
-                <h3 id="statOffers" class="text-2xl font-bold">0</h3>
-            </div>
-        </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h2 class="text-xl font-bold mb-6 italic"><i class="fas fa-rocket mr-2"></i> Launch New Campaign</h2>
-                <div class="space-y-4">
-                    <input id="prodName" type="text" placeholder="Offer Name (e.g. HDFC Credit Card)" class="w-full p-3 border rounded-lg">
-                    <div class="flex space-x-4">
-                        <select id="prodCat" class="w-1/2 p-3 border rounded-lg">
-                            <option value="credit-card">Credit Card</option>
-                            <option value="loan">Business Loan</option>
-                            <option value="insurance">Insurance</option>
-                        </select>
-                        <input id="prodPayout" type="text" placeholder="Payout (e.g. ₹2500)" class="w-1/2 p-3 border rounded-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800">
+                    <h3 class="text-blue-300 font-bold mb-6 uppercase tracking-widest"><i class="fas fa-plus-circle mr-2"></i> Launch New Campaign</h3>
+                    <div class="space-y-4">
+                        <input id="admName" type="text" placeholder="Product Name" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none focus:ring-1 ring-blue-500">
+                        <div class="grid grid-cols-2 gap-4">
+                            <select id="admCat" class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-sm outline-none">
+                                <option value="credit-card">Credit Card</option>
+                                <option value="loan">Loans</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="saving-account">Savings</option>
+                            </select>
+                            <input id="admPayout" type="text" placeholder="Payout ₹" class="bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none">
+                        </div>
+                        <input id="admImg" type="text" placeholder="Image URL (Leave empty for Pexels AI)" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 outline-none">
+                        <input id="admLink" type="text" placeholder="Affiliate/Tracking Link" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-blue-300">
+                        <textarea id="admDesc" placeholder="Key Benefits (Point wise)" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-800 h-24 outline-none"></textarea>
+                        
+                        <button onclick="publishCampaign()" class="w-full bg-blue-600 py-5 rounded-2xl font-black text-lg shadow-xl shadow-blue-900/40">PUBLISH & AUTOMATE</button>
                     </div>
-                    <input id="prodLink" type="text" placeholder="Affiliate Link" class="w-full p-3 border rounded-lg">
-                    <input id="prodImg" type="text" placeholder="Banner Image URL" class="w-full p-3 border rounded-lg">
-                    <textarea id="prodDesc" placeholder="Marketing Description & Keywords" class="w-full p-3 border rounded-lg h-24"></textarea>
-                    
-                    <div class="p-4 bg-blue-50 rounded-lg">
-                        <p class="text-xs font-bold text-blue-800 mb-3">AUTO-POST TO SOCIAL CHANNELS:</p>
-                        <div class="flex space-x-3 text-xl">
-                            <i class="fab fa-facebook text-blue-600 cursor-pointer"></i>
-                            <i class="fab fa-instagram text-pink-500 cursor-pointer"></i>
-                            <i class="fab fa-whatsapp text-green-500 cursor-pointer"></i>
-                            <i class="fab fa-youtube text-red-600 cursor-pointer"></i>
-                            <i class="fab fa-twitter text-blue-400 cursor-pointer"></i>
+                </div>
+
+                <div class="space-y-10">
+                    <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800">
+                        <h3 class="text-green-400 font-bold mb-4 uppercase text-sm"><i class="fab fa-whatsapp mr-2"></i> Bulk Marketing Hub</h3>
+                        <div class="flex space-x-4">
+                            <button class="flex-1 bg-green-600/20 text-green-500 p-4 rounded-xl border border-green-500/20 font-bold text-xs uppercase">Send Bulk Poster</button>
+                            <button class="flex-1 bg-blue-600/20 text-blue-500 p-4 rounded-xl border border-blue-500/20 font-bold text-xs uppercase">Broadcast Link</button>
                         </div>
                     </div>
 
-                    <button onclick="saveProduct()" class="w-full bg-blue-600 text-white p-4 rounded-xl font-bold hover:bg-blue-700 shadow-lg">
-                        Publish & Track All Channels
-                    </button>
+                    <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800 h-80 overflow-y-auto">
+                        <h3 class="text-slate-400 font-bold mb-4 uppercase text-sm">Real-time Lead Tracker</h3>
+                        <table class="w-full text-xs text-left">
+                            <tbody id="leadData"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-            <div class="bg-white p-8 rounded-2xl shadow-lg overflow-hidden">
-                <h2 class="text-xl font-bold mb-6"><i class="fas fa-list mr-2"></i> Real-time Lead Tracker</h2>
-                <div class="overflow-y-auto h-[450px]">
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-100 text-xs uppercase">
-                            <tr>
-                                <th class="p-3">Customer</th>
-                                <th class="p-3">Product</th>
-                                <th class="p-3">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leadTable" class="text-sm">
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-
         </div>
     </div>
 
     <script>
+        // Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyD3FEfP9Htj3ANvIENwzlNIKZRE7qIYFBc",
             authDomain: "smile-finance-ai-2026.firebaseapp.com",
@@ -102,39 +79,56 @@
         };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+        const makeURL = "https://hook.eu1.make.com/n8tkfx86y526ml5qjr7dxn02n3r53dlr";
+        const pexelsKey = "7TEShXts406lDUgqHkVLnXRa1s6nepx5kb9tDtAUFetmTDpqrASG5mjR";
 
-        // 1. Save Product & Logic
-        function saveProduct() {
-            const data = {
-                name: document.getElementById('prodName').value,
-                category: document.getElementById('prodCat').value,
-                payout: document.getElementById('prodPayout').value,
-                link: document.getElementById('prodLink').value,
-                image: document.getElementById('prodImg').value,
-                desc: document.getElementById('prodDesc').value,
-                timestamp: Date.now()
-            };
-            database.ref('products/').push(data).then(() => alert("Marketing Campaign Live!"));
+        // AUTHENTICATION LOGIC
+        function checkAuth() {
+            const id = document.getElementById('adminID').value;
+            const pass = document.getElementById('adminPass').value;
+            if(id === "Aarif@786" && pass === "Aarif@#786") {
+                document.getElementById('login-box').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                loadLeads();
+            } else {
+                alert("Galat Password Hai Bhai!");
+            }
         }
 
-        // 2. Real-time Listeners for Stats
-        database.ref('products/').on('value', snap => {
-            document.getElementById('statOffers').innerText = snap.numChildren();
-        });
+        async function publishCampaign() {
+            let imgURL = document.getElementById('admImg').value;
+            const prodName = document.getElementById('admName').value;
+            if(!imgURL) {
+                const res = await fetch(`https://api.pexels.com/v1/search?query=${prodName}&per_page=1`, {
+                    headers: { Authorization: pexelsKey }
+                });
+                const json = await res.json();
+                imgURL = json.photos[0] ? json.photos[0].src.medium : "https://via.placeholder.com/300";
+            }
+            const payload = {
+                name: prodName,
+                category: document.getElementById('admCat').value,
+                payout: document.getElementById('admPayout').value,
+                image: imgURL,
+                link: document.getElementById('admLink').value,
+                desc: document.getElementById('admDesc').value,
+                timestamp: new Date().toLocaleString()
+            };
+            database.ref('products/').push(payload);
+            fetch(makeURL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+            alert("Live ho gaya!");
+        }
 
-        database.ref('leads/').on('value', snap => {
-            document.getElementById('statLeads').innerText = snap.numChildren();
-            const table = document.getElementById('leadTable');
-            table.innerHTML = "";
-            snap.forEach(child => {
-                const lead = child.val();
-                table.innerHTML += `<tr class="border-b">
-                    <td class="p-3">${lead.cust_name || 'Visitor'}</td>
-                    <td class="p-3 font-bold">${lead.product_name || 'Click'}</td>
-                    <td class="p-3"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs">Active</span></td>
-                </tr>`;
+        function loadLeads() {
+            database.ref('leads/').on('value', (snap) => {
+                const table = document.getElementById('leadData');
+                table.innerHTML = "";
+                snap.forEach(child => {
+                    const lead = child.val();
+                    table.innerHTML += `<tr class="border-b border-slate-800"><td class="py-3 font-bold text-blue-400">${lead.product_name}</td><td class="py-3 text-slate-500">${lead.channel}</td></tr>`;
+                });
             });
-        });
+        }
     </script>
 </body>
 </html>
