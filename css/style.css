@@ -1,1 +1,22 @@
+:root { --blue: #1a73e8; --dark: #0d47a1; --white: #ffffff; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Lexend', sans-serif; background: #fdfdfd; color: #333; }
 
+/* Hero Video Swag */
+.hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+.video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+#heroVideo { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+
+.navbar { position: absolute; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 28px; font-weight: 900; }
+.logo span { color: var(--blue); }
+
+.hero-text h1 { font-size: 68px; font-weight: 900; line-height: 1.1; margin-bottom: 25px; }
+.hero-text span { color: var(--blue); }
+.btn-main { background: var(--blue); color: white; padding: 20px 45px; border-radius: 50px; font-size: 20px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: 0.3s; }
+.btn-main:hover { transform: scale(1.1); background: var(--dark); }
+
+/* Service Images */
+.img-box { height: 200px; background-size: cover; background-position: center; border-radius: 15px 15px 0 0; }
+.service-grid { display: flex; gap: 30px; justify-content: center; padding: 50px 5%; }
+.s-card { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 350px; text-align: center; overflow: hidden; }
