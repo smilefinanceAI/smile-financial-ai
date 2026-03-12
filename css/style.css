@@ -1,133 +1,140 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap');
+
 :root {
     --primary: #1a73e8;
     --dark: #0d47a1;
-    --text: #202124;
-    --bg-light: #f8f9fa;
+    --light-bg: #f4f7fe;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; /* Isse overflow ruk jayega */
+}
 
-html, body {
-    width: 100%;
-    overflow-x: hidden; /* Screen se bahar kuch nahi jayega */
+body {
     font-family: 'Lexend', sans-serif;
-    color: var(--text);
-    background: var(--bg-light);
-    scroll-behavior: smooth;
+    background-color: var(--light-bg);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Side scroll band */
 }
 
-/* Header & Nav */
-.navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+/* Master Container - Isse sab kuch beech mein rahega */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.logo { font-size: 24px; font-weight: 900; color: var(--dark); text-decoration: none; }
-.logo span { color: var(--primary); }
-
-/* Hero Section Fix */
+/* Hero Section */
 .hero {
-    width: 100%;
-    min-height: 80vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 5%;
-    text-align: center;
+    background: linear-gradient(135deg, #0d47a1 0%, #1a73e8 100%);
     color: white;
-    background: #000;
+    padding: 100px 0 60px;
+    text-align: center;
+    border-radius: 0 0 50px 50px; /* Modern Curve */
 }
 
-.video-bg {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 0;
-}
-
-#heroVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 900px; /* Text ko screen ke andar rakhne ke liye */
-}
-
-.hero-content h1 {
-    font-size: clamp(32px, 8vw, 64px); /* Mobile par chhota, PC par bada */
+.hero h1 {
+    font-size: clamp(28px, 8vw, 54px);
     font-weight: 800;
-    margin-bottom: 20px;
-    line-height: 1.2;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
 }
 
-.hero-content p {
-    font-size: clamp(16px, 4vw, 22px);
-    margin-bottom: 30px;
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 30px;
 }
 
-/* Service Grid (Clean Layout) */
-.services { padding: 60px 5%; width: 100%; }
-.section-title { text-align: center; font-size: 36px; margin-bottom: 40px; }
-
-.service-grid {
+/* Service Card Swag */
+.services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-top: -50px; /* Cards ko hero ke upar chadha diya */
+    padding-bottom: 60px;
 }
 
-.s-card {
+.card {
     background: white;
-    border-radius: 15px;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    border: 1px solid #eee;
+    box-shadow: var(--card-shadow);
+    transition: 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
-.s-card:hover { transform: translateY(-5px); }
-.s-img { height: 200px; background-size: cover; background-position: center; }
-.s-card h3 { padding: 20px 20px 10px; font-size: 24px; }
-.s-card p { padding: 0 20px 20px; color: #666; font-size: 16px; }
+.card:hover {
+    transform: translateY(-10px);
+}
 
-/* Form Section */
-.form-section { background: var(--dark); padding: 80px 5%; width: 100%; }
-.form-wrapper {
+.card-img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 25px;
+    text-align: center;
+}
+
+.card-body h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--dark);
+}
+
+/* Professional Buttons */
+.btn-prime {
+    background: var(--primary);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Form Section Fix */
+.form-box {
     background: white;
     padding: 40px;
-    border-radius: 20px;
-    max-width: 500px;
-    margin: 0 auto;
+    border-radius: 30px;
+    box-shadow: var(--card-shadow);
+    max-width: 600px;
+    margin: 40px auto;
 }
 
 input, select {
     width: 100%;
     padding: 15px;
     margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    border: 2px solid #eee;
+    border-radius: 12px;
     font-size: 16px;
+    outline: none;
 }
 
-.btn-main {
-    width: 100%;
-    background: var(--primary);
-    color: white;
-    padding: 18px;
-    border-radius: 10px;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
+input:focus { border-color: var(--primary); }
+
+/* Stats Strip */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    padding: 40px 0;
+    margin: 40px 0;
+    border-radius: 20px;
+    text-align: center;
 }
