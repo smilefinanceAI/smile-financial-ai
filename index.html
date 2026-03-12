@@ -3,132 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smile Finance - Affiliate & Marketing Pro</title>
+    <title>Smile Finance - Best Financial Deals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .gromo-card { transition: all 0.3s ease; }
-        .gromo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .custom-scroll::-webkit-scrollbar { width: 5px; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
-    </style>
 </head>
-<body class="bg-slate-50 font-sans">
+<body class="bg-blue-50">
 
-    <header class="bg-white p-4 sticky top-0 z-50 shadow-sm flex justify-between items-center border-b border-blue-100">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-black shadow-lg shadow-blue-200">SF</div>
-            <div>
-                <h1 class="text-sm font-black text-slate-800 leading-none">SMILE FINANCE</h1>
-                <p class="text-[9px] text-blue-500 font-bold tracking-widest uppercase">Affiliate Network</p>
-            </div>
+    <header class="bg-white p-4 sticky top-0 z-50 shadow-sm border-b border-blue-100 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center text-white font-black">SF</div>
+            <h1 class="text-sm font-black text-slate-800 leading-none uppercase tracking-tighter">Smile Finance</h1>
         </div>
-        <div class="bg-green-50 px-4 py-1.5 rounded-full border border-green-100 flex items-center">
-            <div class="text-right mr-3">
-                <span class="text-[8px] text-green-600 block font-bold uppercase">Balance</span>
-                <span class="text-sm font-black text-green-700">₹45,280</span>
-            </div>
-            <i class="fas fa-wallet text-green-600"></i>
-        </div>
+        <div class="bg-blue-50 px-3 py-1 rounded-full"><span class="text-xs font-bold text-blue-700">₹0.00</span></div>
     </header>
 
-    <div class="p-4 flex space-x-4 overflow-x-auto no-scrollbar">
-        <button onclick="filterProducts('all')" class="bg-blue-600 text-white px-6 py-2 rounded-full text-xs font-bold whitespace-nowrap shadow-md shadow-blue-200">All Products</button>
-        <button onclick="filterProducts('credit-card')" class="bg-white text-gray-600 px-6 py-2 rounded-full text-xs font-bold whitespace-nowrap border">Credit Cards</button>
-        <button onclick="filterProducts('loan')" class="bg-white text-gray-600 px-6 py-2 rounded-full text-xs font-bold whitespace-nowrap border">Loans</button>
-        <button onclick="filterProducts('insurance')" class="bg-white text-gray-600 px-6 py-2 rounded-full text-xs font-bold whitespace-nowrap border">Insurance</button>
+    <div class="p-4 flex space-x-4 overflow-x-auto">
+        <button class="bg-blue-600 text-white px-6 py-2 rounded-full text-xs font-bold">All</button>
+        <button class="bg-white text-gray-500 px-6 py-2 rounded-full text-xs font-bold border">Cards</button>
+        <button class="bg-white text-gray-500 px-6 py-2 rounded-full text-xs font-bold border">Loans</button>
     </div>
 
-    <div class="p-4 mb-10">
-        <h2 class="text-lg font-black text-slate-800 mb-6 flex items-center">
-            <span class="w-2 h-6 bg-blue-600 rounded-full mr-3"></span> Active Offers
-        </h2>
-        <div id="live-products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            </div>
-    </div>
-
-    <div class="bg-slate-900 text-white p-6 md:p-10 rounded-t-[3rem] shadow-2xl">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-10 border-b border-slate-800 pb-6">
-                <div>
-                    <h2 class="text-2xl font-black text-blue-400 italic">Command Center Pro</h2>
-                    <p class="text-slate-400 text-xs mt-1 uppercase tracking-widest">Real-time Marketing & Analytics</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-4 rounded-2xl text-center min-w-[120px]">
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">Total Leads</p>
-                        <h3 id="leadCount" class="text-xl font-black text-blue-400">0</h3>
-                    </div>
-                    <div class="bg-slate-800 p-4 rounded-2xl text-center min-w-[120px]">
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">Live Offers</p>
-                        <h3 id="offerCount" class="text-xl font-black text-green-400">0</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
-                        <h3 class="text-sm font-black text-blue-300 mb-5 uppercase tracking-tighter"><i class="fas fa-plus-circle mr-2"></i> Launch New Campaign</h3>
-                        <div class="space-y-4">
-                            <input id="admName" type="text" placeholder="Product Name (e.g. Mudra Loan)" class="w-full bg-slate-900 p-4 rounded-xl border border-slate-700 outline-none focus:ring-2 ring-blue-500 text-sm">
-                            <div class="grid grid-cols-2 gap-4">
-                                <select id="admCat" class="bg-slate-900 p-4 rounded-xl border border-slate-700 text-sm outline-none">
-                                    <option value="credit-card">Credit Card</option>
-                                    <option value="loan">Loans</option>
-                                    <option value="insurance">Insurance</option>
-                                    <option value="saving-account">Savings</option>
-                                </select>
-                                <input id="admPayout" type="text" placeholder="Payout ₹" class="bg-slate-900 p-4 rounded-xl border border-slate-700 text-sm outline-none">
-                            </div>
-                            <input id="admImg" type="text" placeholder="Image URL (Leave empty for Pexels AI)" class="w-full bg-slate-900 p-4 rounded-xl border border-slate-700 text-sm outline-none">
-                            <input id="admLink" type="text" placeholder="Affiliate/Tracking Link" class="w-full bg-slate-900 p-4 rounded-xl border border-slate-700 text-sm outline-none font-mono text-blue-300">
-                            <textarea id="admDesc" placeholder="Key Benefits (Point wise)" class="w-full bg-slate-900 p-4 rounded-xl border border-slate-700 text-sm h-24 outline-none"></textarea>
-                            
-                            <div class="p-4 bg-slate-900/50 rounded-2xl border border-dashed border-slate-600">
-                                <p class="text-[10px] font-black text-slate-500 mb-3 uppercase">Sync to All Handlers:</p>
-                                <div class="flex justify-between text-2xl px-2">
-                                    <i class="fab fa-facebook text-blue-500"></i>
-                                    <i class="fab fa-instagram text-pink-500"></i>
-                                    <i class="fab fa-whatsapp text-green-500"></i>
-                                    <i class="fab fa-google text-red-500"></i>
-                                    <i class="fab fa-linkedin text-blue-400"></i>
-                                    <i class="fab fa-youtube text-red-600"></i>
-                                </div>
-                            </div>
-                            
-                            <button onclick="publishCampaign()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-2xl font-black text-lg transition-all shadow-2xl shadow-blue-900/40 active:scale-95 uppercase">Publish & Automate</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-sm font-black text-slate-400 uppercase tracking-tighter"><i class="fas fa-chart-line mr-2"></i> High-Level Lead Analytics</h3>
-                            <button class="text-[10px] bg-slate-700 px-3 py-1 rounded-full text-blue-300 font-bold uppercase">Source Tracking ON</button>
-                        </div>
-                        <div class="overflow-x-auto h-[550px] custom-scroll">
-                            <table class="w-full text-left">
-                                <thead class="sticky top-0 bg-slate-800 text-[10px] text-slate-500 uppercase">
-                                    <tr>
-                                        <th class="p-4">Customer/Lead</th>
-                                        <th class="p-4">Product Hit</th>
-                                        <th class="p-4">Channel</th>
-                                        <th class="p-4">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="leadData" class="text-xs text-slate-300">
-                                    </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4" id="live-products">
         </div>
-    </div>
 
     <script>
         const firebaseConfig = {
@@ -143,109 +41,33 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        const makeURL = "https://hook.eu1.make.com/n8tkfx86y526ml5qjr7dxn02n3r53dlr";
-        const pexelsKey = "7TEShXts406lDUgqHkVLnXRa1s6nepx5kb9tDtAUFetmTDpqrASG5mjR";
-
-        // --- 1. PUBLISH CAMPAIGN (ADMIN) ---
-        async function publishCampaign() {
-            let imgURL = document.getElementById('admImg').value;
-            const prodName = document.getElementById('admName').value;
-
-            if(!prodName || !document.getElementById('admPayout').value) return alert("Pehle data bharo!");
-
-            // AI Pexels Fetch
-            if(!imgURL) {
-                const res = await fetch(`https://api.pexels.com/v1/search?query=${prodName}&per_page=1`, {
-                    headers: { Authorization: pexelsKey }
-                });
-                const json = await res.json();
-                imgURL = json.photos[0] ? json.photos[0].src.medium : "https://via.placeholder.com/300";
-            }
-
-            const payload = {
-                name: prodName,
-                category: document.getElementById('admCat').value,
-                payout: document.getElementById('admPayout').value,
-                image: imgURL,
-                link: document.getElementById('admLink').value,
-                desc: document.getElementById('admDesc').value,
-                timestamp: new Date().toLocaleString()
-            };
-
-            // Save to Firebase
-            database.ref('products/').push(payload);
-
-            // Blast to Make.com (Social Media)
-            fetch(makeURL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            }).then(() => alert("Mission Accomplished! Platform and Social Media Synced."));
-        }
-
-        // --- 2. LOAD LIVE PRODUCTS (INDEX) ---
         database.ref('products/').on('value', (snapshot) => {
             const container = document.getElementById('live-products');
-            const offerCount = document.getElementById('offerCount');
             container.innerHTML = "";
-            offerCount.innerText = snapshot.numChildren();
-
             snapshot.forEach((child) => {
                 const prod = child.val();
                 container.innerHTML += `
-                    <div class="gromo-card bg-white p-5 rounded-3xl border border-blue-50 shadow-sm flex flex-col justify-between">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="${prod.image}" class="w-16 h-16 rounded-2xl object-cover border border-slate-100">
+                    <div class="bg-white p-4 rounded-3xl border border-blue-100 shadow-sm flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <img src="${prod.image}" class="w-14 h-14 rounded-2xl object-cover">
                             <div>
-                                <h4 class="font-black text-slate-800 text-sm uppercase">${prod.name}</h4>
-                                <span class="bg-blue-50 text-blue-600 text-[8px] font-bold px-2 py-0.5 rounded-full uppercase">${prod.category}</span>
+                                <h4 class="font-black text-slate-800 text-sm">${prod.name}</h4>
+                                <span class="text-green-600 font-bold text-xs">Earn ₹${prod.payout}</span>
                             </div>
                         </div>
-                        <p class="text-[10px] text-slate-400 mb-4 line-clamp-2">${prod.desc}</p>
-                        <div class="flex items-center justify-between border-t pt-4">
-                            <div>
-                                <span class="text-[8px] text-slate-400 block font-bold uppercase tracking-widest">Payout</span>
-                                <span class="text-sm font-black text-green-600">₹${prod.payout}</span>
-                            </div>
-                            <a href="${prod.link}" target="_blank" onclick="trackLead('${prod.name}')" class="bg-blue-600 text-white px-6 py-2 rounded-xl text-[10px] font-black shadow-lg shadow-blue-200 uppercase">Apply Now</a>
-                        </div>
+                        <a href="${prod.link}" target="_blank" onclick="trackLead('${prod.name}')" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase shadow-lg shadow-blue-200">Apply</a>
                     </div>
                 `;
             });
         });
 
-        // --- 3. LEAD TRACKING LOGIC ---
         function trackLead(pName) {
             database.ref('leads/').push({
                 cust_name: "Customer Click",
                 product_name: pName,
-                channel: "Direct Web",
-                status: "Pending",
+                channel: window.location.search || "Organic Web",
                 timestamp: Date.now()
             });
-        }
-
-        database.ref('leads/').on('value', (snapshot) => {
-            const table = document.getElementById('leadData');
-            document.getElementById('leadCount').innerText = snapshot.numChildren();
-            table.innerHTML = "";
-            snapshot.forEach((child) => {
-                const lead = child.val();
-                table.innerHTML += `
-                    <tr class="border-b border-slate-700/50">
-                        <td class="p-4 font-bold text-white uppercase">${lead.cust_name}</td>
-                        <td class="p-4 text-blue-400">${lead.product_name}</td>
-                        <td class="p-4"><span class="bg-slate-700 px-2 py-1 rounded-full text-[9px] text-slate-300">WhatsApp Marketing</span></td>
-                        <td class="p-4 text-right text-green-500 font-bold uppercase">Live</td>
-                    </tr>
-                `;
-            });
-        });
-
-        // --- 4. NATURAL FILTER ---
-        function filterProducts(cat) {
-            // Hum isme Firebase query ka logic dalenge filter ke liye
-            console.log("Filtering for: " + cat);
         }
     </script>
 </body>
